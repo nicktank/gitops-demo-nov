@@ -16,17 +16,13 @@ exports.init = (opts) => {
 };
 
 exports.build = () => {
-  let filter = `(_metric === 'blocked.outputs' && output === '${name}')`;
-  let _raw = `'Backpressure is engaged for destination ${name}'`;
-  const add = [
-    { name: 'output', value: `'${name}'` },
-    { name: '_metric', value: "'blocked.outputs'" },
-  ];
+  let workerGroupMessage = "";
+  let filter = `_metric === 'backpressure.outputs' && output === '${name}'`;
+
   if (__workerGroup) {
     filter = `${filter} && __worker_group === '${__workerGroup}'`;
-    _raw = `'Backpressure is engaged for destination ${name} in group ${__workerGroup}'`;
+    workerGroupMessage = ` in group ${__workerGroup}`;
   }
-  add.push({name: '_raw', value: _raw});
 
   return {
     filter,
@@ -38,7 +34,7 @@ exports.build = () => {
             conf: {
               timeWindow,
               aggregations: [
-                'perc(95, _value).as(blocked)'
+                'max(_value).as(backpressure_type)'
               ],
               lagTolerance: '20s',
               idleTimeLimit: '20s',
@@ -46,13 +42,29 @@ exports.build = () => {
           },
           {
             id: 'drop',
-            filter: 'Math.round(blocked) === 0',
+            filter: "(typeof backpressure_type === 'undefined' || backpressure_type === 0)",
             conf: {}
           },
           {
             id: 'eval',
+            filter: 'backpressure_type === 1', // BackpressureStatus.BLOCKING
             conf: {
-              add
+              add: [
+                { name: 'output', value: `'${name}'` },
+                { name: '_metric', value: "'backpressure.outputs'" },
+                { name: '_raw', value: `'Backpressure (blocking) is engaged for destination ${name}${workerGroupMessage}'`}
+              ]
+            }
+          },
+          {
+            id: 'eval',
+            filter: 'backpressure_type === 2', // BackpressureStatus.DROPPING
+            conf: {
+              add: [
+                { name: 'output', value: `'${name}'` },
+                { name: '_metric', value: "'backpressure.outputs'" },
+                { name: '_raw', value: `'Backpressure (dropping) is engaged for destination ${name}${workerGroupMessage}'`}
+              ]
             }
           }
         ]

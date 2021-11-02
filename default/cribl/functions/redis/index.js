@@ -26,6 +26,28 @@ exports.unload = () => {
   commands = [];
 }
 
+function getCredentials(parsedUrl) {
+  if (conf.authType === 'manual') {
+    return {
+      user: conf.username,
+      password: conf.password
+    };
+  } else if(conf.authType === 'credentialsSecret') {
+    return {
+      user: conf.credentialsUsername,
+      password: conf.credentialsPassword
+    };
+  } else if(conf.authType === 'textSecret') {
+    return {
+      password: conf.textPassword
+    }
+  } else {
+    return {
+      user: parsedUrl.user || undefined,
+      password: parsedUrl.password || undefined
+    };
+  }
+}
 
 function getClient() {
   if(readyClientProm) return readyClientProm;
@@ -76,8 +98,7 @@ exports.init = (opt) => {
     enable_offline_queue: false,
     string_numbers: false,
     tls,
-    user: parsedUrl.user,
-    password: parsedUrl.password,
+    ...(getCredentials(parsedUrl)),
     retry_strategy: function(options) {
       return options.attempt > 7 ? 10000 :
         Math.min(Math.pow(2, options.attempt-1) * 100, 10000);

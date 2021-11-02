@@ -1,9 +1,10 @@
 exports.jobType = 'task-per-node';
 exports.name = 'worker_upgrade';
+
+const os = require('os');
+
 let upgradeClient;
-let packageVersion;
-let localHashUrl;
-let localPackageUrl;
+let packages;
 let authToken;
 
 const {
@@ -12,21 +13,19 @@ const {
 
 exports.initJob = async (opts) => {
   const { conf } = opts.conf.executor;
+  
+  await Promise.all(conf.packages.map( async (each) => {
+    const { packageFile, packageUrl, hashUrl, hashFile, hashType } = each;
+    await performPackageDownload(packageUrl, packageFile, hashUrl, hashFile, hashType);
+  }))
 
-  const { packageFile, packageUrl, hashUrl, hashFile, version, hashType } = conf.packageDownloadInfo;
-  await performPackageDownload(packageUrl, packageFile, hashUrl, hashFile, hashType);
-
-  packageVersion = version;
-  localPackageUrl = conf.localPackageUrl;
-  localHashUrl = conf.localHashUrl;
+  packages = conf.packages;
   authToken = conf.authToken;
 };
 exports.jobSeedTask = async () => {
   return {
     task: {
-      packageVersion,
-      packageUrl: localPackageUrl,
-      hashUrl: localHashUrl,
+      packages,
       authToken,
     },
   };
@@ -40,10 +39,18 @@ exports.jobOnError = async (job, taskId, error) => {};
 exports.taskExecute = async (job, opts) => {
 
   const logger = job.logger();
+  const variant = [os.platform(), os.arch()];
+  const package = opts.packages.find((p) => p.variant[0] === variant[0] && p.variant[1] === variant[1]);
+
+  if(!package) {
+    job.reportError(new Error(`Could not find a suitable package for ${variant.join(', ')}`), 'TASK_FATAL');
+    return;
+  }
+
   const descriptor = {
-    packageUrl: opts.packageUrl,
-    hashUrl: opts.hashUrl,
-    version: opts.packageVersion,
+    packageUrl: package.localPackageUrl,
+    hashUrl: package.localHashUrl,
+    version: package.version,
   };
   logger.info('task opts', { opts });
   logger.info('Checking upgradability', { ...descriptor });
@@ -57,7 +64,7 @@ exports.taskExecute = async (job, opts) => {
   logger.info('Fetching assets');
   const downloadResult = await upgradeClient.downloadAssets(descriptor, opts.authToken);
   logger.info('Fetched assets', downloadResult);
-  if (opts.hashUrl) {
+  if (descriptor.hashUrl) {
     logger.info('Verifying assets');
     await upgradeClient.verifyAssets(downloadResult);
     logger.info('Assets verified');

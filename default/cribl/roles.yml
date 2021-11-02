@@ -27,6 +27,10 @@ notification_admin:
     - '* /notification-targets/*'
     - '* /system/messages'
     - '* /system/messages/*'
+gitops:
+  description: 'Members with the gitops role will be able to sync the LogStream deployment with a remote repo.'
+  policy:
+    - POST /version/sync
 user:
   description: 'The base user role allows users to see the system info along with their own profile settings.'
   policy:
