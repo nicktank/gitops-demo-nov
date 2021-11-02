@@ -1,0 +1,57 @@
+{
+  "commands": {
+    "ui:field": "Table",
+    "items": {
+      "outField": {
+        "ui:options": { "columnWidth": "25%" }
+      },
+      "command": {
+        "ui:widget": "AutoComplete",
+        "ui:options": { 
+          "columnWidth": "20%",
+          "editable": true,
+          "uiEnumOptions": [
+            {"value": "get"},
+            {"value": "set"},
+            {"value": "del"},
+            {"value": "exists"},
+            {"value": "incr"},
+            {"value": "incrby"},
+            {"value": "decr"},
+            {"value": "decrby"},
+            {"value": "hget"},
+            {"value": "hset"},
+            {"value": "hdel"},
+            {"value": "hexists"},
+            {"value": "hincr"},
+            {"value": "hincrby"},
+            {"value": "hkeys"},
+            {"value": "hvals"},
+            {"value": "echo"},
+            {"value": "expire"},
+            {"value": "persist"},
+            {"value": "ttl"}
+          ]   
+        }
+      },
+      "keyExpr": {
+        "ui:options": { "columnWidth": "30%" }
+      },
+      "argsExpr": {
+        "ui:options": { "columnWidth": "25%" }
+      }
+    }
+  },
+  "url": {
+    "ui:placeholder": "URL to connect to, e.g. redis://localhost:6379"
+  },
+  "ui:options": {
+    "groups": {
+      "advanced": {
+        "title": "Advanced Settings",
+        "collapsed": true,
+        "properties": ["maxBlockSecs"]
+      }
+    }
+  }
+}
