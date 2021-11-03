@@ -9,3 +9,4 @@ functions:
       add:
         - name: index
           value: "'main'"
+          description: "adding things via GitOps"
