@@ -16,3 +16,21 @@ outputs:
     authToken: ""
     type: splunk
     host: 34.219.27.95
+  new_relic_otel:
+    systemFields:
+      - cribl_pipe
+    authType: none
+    tls:
+      disabled: true
+    concurrency: 5
+    maxPayloadSizeKB: 4096
+    timeoutSec: 30
+    flushPeriodSec: 1
+    failedRequestLoggingMode: none
+    safeHeaders: []
+    onBackpressure: block
+    type: open_telemetry
+    endpoint: https://otlp.nr-data.net:4317/
+    metadata:
+      - key: api-key
+        value: "'0691216e07d7977e60efb248608e096f516cNRAL'"
