@@ -22,6 +22,8 @@ git:
   user: nicktank
   password: "#42:+mau0mjT+fnt8mZ0AVM6FVF25v37MIgTyui1+ERI+7eN4ZGWrwBua0zh/5NG+tCjyupAnP\
     5QyQFNFYSbLzIv0g=="
+  commitDeploySingleAction: true
+  defaultCommitMessage: Basic commit message
 tls:
   defaultEcdhCurve: auto
   rejectUnauthorized: true
