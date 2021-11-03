@@ -1,0 +1,31 @@
+api:
+  retryCount: 120
+  retrySleepSecs: 5
+  baseUrl: ""
+  disabled: false
+  revokeOnRoleChange: true
+  authTokenTTL: 86400
+  headers: {}
+  ssl:
+    disabled: true
+  host: 0.0.0.0
+  port: 9000
+  loginRateLimit: 2/second
+auth:
+  type: local
+  filter_type: email_whitelist
+git:
+  gitOps: none
+  authType: basic
+  autoAction: none
+  remote: https://github.com/nicktank/ls-gitops-demo
+  user: nicktank
+  password: "#42:+mau0mjT+fnt8mZ0AVM6FVF25v37MIgTyui1+ERI+7eN4ZGWrwBua0zh/5NG+tCjyupAnP\
+    5QyQFNFYSbLzIv0g=="
+tls:
+  defaultEcdhCurve: auto
+  rejectUnauthorized: true
+upgradeSettings:
+  upgradeSource: cdn
+rollback: {}
+backups: {}

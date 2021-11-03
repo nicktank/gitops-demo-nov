@@ -19,6 +19,8 @@ functions:
       add:
         - name: __inputId
           value: "'cribl:CriblMetrics'"
+        - name: _value
+          value: "+_value"
   - id: comment
     filter: "true"
     disabled: null

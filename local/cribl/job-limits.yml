@@ -1,0 +1,10 @@
+concurrentSystemJobLimit: 10
+concurrentScheduledJobLimit: -2
+concurrentSystemTaskLimit: 1
+maxTaskPerc: 0.5
+taskManifestFlushPeriodMs: 100
+taskManifestMaxBufferSize: 1000
+taskManifestReadBufferSize: 4kb
+schedulingPolicy: LeastInFlight
+jobTimeout: "0"
+taskHeartbeatPeriod: 60

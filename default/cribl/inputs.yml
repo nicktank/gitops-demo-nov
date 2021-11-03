@@ -101,3 +101,15 @@ inputs:
     type: criblmetrics
     disabled: true
     pipeline: cribl_metrics_rollup
+  in_logstream:
+    disabled: true
+    host: 0.0.0.0
+    tls:
+      disabled: true
+    ipWhitelistRegex: /.^/
+    enableProxyHeader: false
+    authToken: ""
+    type: logstream
+    port: 10100
+    authType: manual
+

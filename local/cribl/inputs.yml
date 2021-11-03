@@ -1,0 +1,16 @@
+inputs:
+  music_library:
+    disabled: false
+    sendToRoutes: true
+    host: 0.0.0.0
+    port: 4317
+    tls:
+      disabled: true
+    maxActiveReq: 256
+    enableProxyHeader: false
+    activityLogSampleRate: 100
+    extractSpans: false
+    extractMetrics: false
+    maxActiveCxn: 1000
+    authType: none
+    type: open_telemetry

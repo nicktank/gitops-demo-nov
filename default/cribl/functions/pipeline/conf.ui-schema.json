@@ -1,0 +1,9 @@
+{
+  "processor": {
+    "ui:widget": "ApiLookupWithLink",
+    "ui:options": {
+      "lookupProvider": "RoutePipelines",
+      "link": "${group}/${pack}/pipelines/${value}"
+    }
+  }
+}
