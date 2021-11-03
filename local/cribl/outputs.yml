@@ -1,0 +1,18 @@
+outputs:
+  splunk_single:
+    systemFields:
+      - cribl_pipe
+    port: 9997
+    nestedFields: none
+    throttleRatePerSec: "0"
+    tls:
+      disabled: true
+    connectionTimeout: 10000
+    writeTimeout: 60000
+    enableMultiMetrics: false
+    enableACK: true
+    onBackpressure: block
+    authType: manual
+    authToken: ""
+    type: splunk
+    host: 34.219.27.95
