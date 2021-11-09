@@ -16,7 +16,7 @@ auth:
   filter_type: email_whitelist
 git:
   gitOps: none
-  authType: basic
+  authType: none
   autoAction: none
   remote: https://github.com/nicktank/gitops-demo-nov
   user: nicktank
