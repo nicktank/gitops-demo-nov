@@ -335,6 +335,12 @@
       "title": "Round-robin DNS",
       "description": "Enable to use round-robin DNS lookup. Suitable when DNS server returns multiple addresses in sort order.",
       "default": false
+    },
+    "disableTimeFilter": {
+      "type": "boolean",
+      "title": "Disable time filter",
+      "description": "Used to disable collector event time filtering when a date range is specified.",
+      "default": false
     }
   },
   "dependencies": {

@@ -28,6 +28,9 @@ tls:
   defaultEcdhCurve: auto
   rejectUnauthorized: true
 upgradeSettings:
-  upgradeSource: cdn
+  upgradeSource: path
+  disableAutomaticUpgrade: true
+  packageUrls:
+    - packageUrl: https://cdn.cribl.io/dl/3.2.0/cribl-3.2.0-RC7-01ce0943-linux-x64.tgz
 rollback: {}
 backups: {}

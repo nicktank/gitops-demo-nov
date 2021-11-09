@@ -107,6 +107,7 @@
   },
   "timeout": {"ui:options": {"inline": true, "width": "15%"}},
   "useRoundRobinDns": {"ui:options": {"inline": true, "width": "15%"}},
+  "disableTimeFilter": {"ui:options": {"inline": true, "width": "15%"}},
   "ui:options": {
     "groups": {
       "discover": {
@@ -157,7 +158,7 @@
         "title": "Additional Collector Settings",
         "collapsed": true,
         "properties": [
-          "timeout", "useRoundRobinDns"
+          "timeout", "useRoundRobinDns", "disableTimeFilter"
         ]
       }
     }
