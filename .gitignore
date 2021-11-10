@@ -15,4 +15,5 @@ diag/**
 thirdparty/
 *.cpuprofile
 **/auth/ssh/git.key
+./github*
 ### CUSTOM SECTION -- DO NOT REMOVE ###
