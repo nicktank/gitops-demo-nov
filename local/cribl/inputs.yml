@@ -25,5 +25,5 @@ inputs:
         sample: apache_common
     type: datagen
     connections:
-      - output: splunk_single
+      - output: devnull
         pipeline: gitops_demo
