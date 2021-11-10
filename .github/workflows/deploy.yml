@@ -12,7 +12,7 @@ jobs:
       - name: deploy
         uses: satak/webrequest-action@master
         with:
-          url: '${{secrets.PROD_URL}}/api/v1/version/sync'
+          url: http://54.190.53.106:9000/api/v1/version/sync
           method: POST
           payload: '{"ref":"master","deploy":"true"}'
           headers: '{"Authorization": "Bearer ${{ secrets.BEARER_TOKEN }}"}'
