@@ -1,0 +1,18 @@
+name: Deploy to Production
+on:
+  push:
+    tags:
+      - 'v?[0-9]+.[0-9]+.[0-9]+'
+      - 'v?[0-9]+.[0-9]+.[0-9]+-[RT]C[0-9]+'
+
+jobs: 
+  deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy
+        uses: satak/webrequest-action@master
+        with:
+          url: '${{secrets.PROD_URL}}/api/v1/version/sync'
+          method: POST
+          payload: '{"ref":"master","deploy":"true"}'
+          headers: '{"Authorization": "Bearer ${{ secrets.BEARER_TOKEN }}"}'
