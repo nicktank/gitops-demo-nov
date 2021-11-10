@@ -11,4 +11,6 @@ functions:
           value: "'main'"
         - name: env
           value: "`splunk-${C.env.CRIBL_ENV}`"
+        - name: checking
+          value: "'true'"
 description: adding things via GitOps
