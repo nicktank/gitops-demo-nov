@@ -9,4 +9,6 @@ functions:
       add:
         - name: index
           value: "'main'"
-description: "adding things via GitOps"
+        - name: env
+          value: "`splunk-${C.env.CRIBL_ENV}`"
+description: adding things via GitOps
