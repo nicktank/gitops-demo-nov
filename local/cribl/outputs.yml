@@ -51,5 +51,23 @@ outputs:
     authType: manual
     authToken: ""
     type: splunk
-    host: 34.219.27.95
+    host: 54.245.159.244
     environment: dev
+  prod_splunk_single:
+    systemFields:
+      - cribl_pipe
+    port: 9997
+    nestedFields: none
+    throttleRatePerSec: "0"
+    tls:
+      disabled: true
+    connectionTimeout: 10000
+    writeTimeout: 60000
+    enableMultiMetrics: false
+    enableACK: true
+    onBackpressure: block
+    authType: manual
+    authToken: ""
+    type: splunk
+    host: 34.219.27.95
+    environment: prod
