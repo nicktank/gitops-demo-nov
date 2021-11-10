@@ -16,6 +16,7 @@ outputs:
     authToken: ""
     type: splunk
     host: 34.219.27.95
+    environment: dev
   new_relic_otel:
     systemFields:
       - cribl_pipe
