@@ -5,7 +5,7 @@ routes:
     name: prod_routing
     final: true
     disabled: false
-    pipeline: gitops_demo
+    pipeline: gitops_prod
     description: ""
     clones: []
     enableOutputExpression: true
