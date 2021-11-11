@@ -9,9 +9,9 @@ routes:
     description: ""
     clones: []
     enableOutputExpression: true
-    outputExpression: "'`${C.env.CRIBL_ENV}`_splunk_single'"
+    outputExpression: "`${C.env.CRIBL_ENV}_splunk_single`"
     filter: __inputId=='datagen:apache_common'
-    output: "`${C.env.CRIBL_ENV}`_splunk_single"
+    output: undefined_splunk_single
   - id: default
     name: default
     final: true
