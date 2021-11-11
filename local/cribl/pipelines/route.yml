@@ -1,0 +1,25 @@
+id: default
+groups: {}
+routes:
+  - id: zdChji
+    name: prod_routing
+    final: true
+    disabled: false
+    pipeline: gitops_demo
+    description: ""
+    clones: []
+    enableOutputExpression: true
+    outputExpression: "'`${C.env.CRIBL_ENV}`_splunk_single'"
+    filter: __inputId=='datagen:apache_common'
+    output: "`${C.env.CRIBL_ENV}`_splunk_single"
+  - id: default
+    name: default
+    final: true
+    disabled: false
+    pipeline: main
+    description: ""
+    clones: []
+    enableOutputExpression: false
+    outputExpression: null
+    filter: "true"
+    output: default
