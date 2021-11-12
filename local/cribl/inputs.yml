@@ -17,14 +17,6 @@ inputs:
     connections:
       - output: new_relic_otel
         pipeline: ""
-  apache_common_flows_prod:
-    disabled: false
-    sendToRoutes: true
-    samples:
-      - eventsPerSec: 100
-        sample: apache_common
-    type: datagen
-    environment: master
   apache_common_flows_dev:
     disabled: false
     sendToRoutes: true
@@ -33,3 +25,10 @@ inputs:
         sample: apache_common
     type: datagen
     environment: dev
+  apache_common_flows_master:
+    disabled: false
+    sendToRoutes: true
+    samples:
+      - eventsPerSec: 100
+        sample: apache_common
+    type: datagen
