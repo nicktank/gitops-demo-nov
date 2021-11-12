@@ -32,3 +32,4 @@ inputs:
       - eventsPerSec: 10
         sample: apache_common
     type: datagen
+    environment: dev
