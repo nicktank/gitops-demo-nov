@@ -10,7 +10,7 @@ routes:
     clones: []
     enableOutputExpression: true
     outputExpression: "`${C.env.CRIBL_ENV}_splunk_single`"
-    filter: __inputId=='datagen:apache_common_flows'
+    filter: __inputId==`datagen:apache_common_flows_${C.env.CRIBL_ENV}`
     output: dev_splunk_single
   - id: default
     name: default
