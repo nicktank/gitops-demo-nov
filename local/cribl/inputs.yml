@@ -24,3 +24,12 @@ inputs:
       - eventsPerSec: 10
         sample: apache_error
     type: datagen
+    environment: dev
+  apache_common_flows_prod:
+    disabled: false
+    sendToRoutes: true
+    samples:
+      - eventsPerSec: 100
+        sample: apache_common
+    type: datagen
+    environment: master
