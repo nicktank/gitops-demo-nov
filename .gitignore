@@ -17,5 +17,5 @@ thirdparty/
 **/auth/ssh/git.key
 .github*
 cribl.yml
-**/auth/**
+
 ### CUSTOM SECTION -- DO NOT REMOVE ###
