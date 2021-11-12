@@ -9,3 +9,7 @@ functions:
       add:
         - name: index
           value: "'production'"
+        - name: env
+          value: "`${C.env.CRIBL_ENV}`"
+        - name: checking
+          value: "'true'"
