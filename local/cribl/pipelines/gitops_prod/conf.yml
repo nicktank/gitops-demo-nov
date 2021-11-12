@@ -8,7 +8,7 @@ functions:
     conf:
       add:
         - name: index
-          value: "'production'"
+          value: "`${C.env.CRIBL_ENV}`"
         - name: env
           value: "`${C.env.CRIBL_ENV}`"
         - name: checking
