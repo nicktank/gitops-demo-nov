@@ -19,8 +19,8 @@ inputs:
         pipeline: ""
   apache_common_flows:
     disabled: false
-    sendToRoutes: false
+    sendToRoutes: true
     samples:
       - eventsPerSec: 10
-        sample: apache_common
+        sample: apache_error
     type: datagen
