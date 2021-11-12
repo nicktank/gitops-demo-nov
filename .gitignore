@@ -15,7 +15,7 @@ diag/**
 thirdparty/
 *.cpuprofile
 **/auth/ssh/git.key
+### CUSTOM SECTION -- DO NOT REMOVE ###
 .github*
 cribl.yml
-
-### CUSTOM SECTION -- DO NOT REMOVE ###
+**/auth/**
