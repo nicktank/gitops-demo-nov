@@ -17,28 +17,19 @@ inputs:
     connections:
       - output: new_relic_otel
         pipeline: ""
-  apache_common:
-    disabled: false
-    sendToRoutes: false
-    samples:
-      - eventsPerSec: 20
-        sample: apache_common
-    type: datagen
-    connections:
-      - output: dev_splunk_single
-        pipeline: gitops_demo
-      - output: prod_splunk_single
-        pipeline: gitops_demo
-    status:
-      health: Green
-      timestamp: 1636678224163
-      metrics:
-        eventCount: 64
-    environment: dev
-  syslog_datagen:
+  apache_common_flows:
     disabled: false
     sendToRoutes: true
     samples:
       - eventsPerSec: 10
-        sample: syslog
+        sample: apache_error
     type: datagen
+    environment: dev
+  apache_common_flows_prod:
+    disabled: false
+    sendToRoutes: true
+    samples:
+      - eventsPerSec: 100
+        sample: apache_common
+    type: datagen
+    environment: master
