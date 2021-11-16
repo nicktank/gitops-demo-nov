@@ -13,8 +13,8 @@
     },
     "shouldMarkCriblBreaker": {
       "type": "boolean",
-      "title": "Add Cribl Breaker",
-      "description": "Add this function call to the `cribl_breaker` attribute.",
+      "title": "Add to cribl_breaker",
+      "description": "Add this function name to the cribl_breaker field.",
       "default": true
     }
   },
