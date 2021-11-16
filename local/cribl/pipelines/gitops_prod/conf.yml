@@ -8,8 +8,8 @@ functions:
     conf:
       add:
         - name: index
-          value: "`${C.env.CRIBL_ENV}`"
+          value: "`${C.logStreamEnv}`"
         - name: env
-          value: "`${C.env.CRIBL_ENV}`"
+          value: "`${C.logStreamEnv}`"
         - name: checking
           value: "'true'"
