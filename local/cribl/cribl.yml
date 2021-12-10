@@ -4,7 +4,7 @@ api:
   baseUrl: ""
   disabled: false
   revokeOnRoleChange: true
-  authTokenTTL: 86400
+  authTokenTTL: 2592000
   headers: {}
   ssl:
     disabled: true
