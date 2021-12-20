@@ -13,4 +13,5 @@ functions:
           value: "`splunk-${C.env.CRIBL_ENV}`"
         - name: checking
           value: "'true'"
+    description: Adding a description to test .gitignore
 description: adding things via GitOps
